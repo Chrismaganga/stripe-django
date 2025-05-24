@@ -1,0 +1,250 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Checkout - Advanced eCommerce{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2 class="mb-4">Checkout</h2>
+        
+        <!-- Checkout Form -->
+        <form method="post" id="checkout-form">
+            {% csrf_token %}
+            
+            <!-- Shipping Information -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Shipping Information</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="shipping_first_name" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="shipping_first_name" name="shipping_first_name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="shipping_last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="shipping_last_name" name="shipping_last_name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shipping_address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="shipping_address" name="shipping_address" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="shipping_city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="shipping_city" name="shipping_city" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="shipping_state" class="form-label">State</label>
+                            <input type="text" class="form-control" id="shipping_state" name="shipping_state" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="shipping_zip" class="form-label">ZIP Code</label>
+                            <input type="text" class="form-control" id="shipping_zip" name="shipping_zip" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shipping_phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="shipping_phone" name="shipping_phone" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing Information -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Billing Information</h5>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="same_as_shipping" checked>
+                        <label class="form-check-label" for="same_as_shipping">
+                            Same as shipping information
+                        </label>
+                    </div>
+                    <div id="billing-fields" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="billing_first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="billing_first_name" name="billing_first_name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="billing_last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="billing_last_name" name="billing_last_name">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="billing_address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="billing_address" name="billing_address">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="billing_city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="billing_city" name="billing_city">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="billing_state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="billing_state" name="billing_state">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="billing_zip" class="form-label">ZIP Code</label>
+                                <input type="text" class="form-control" id="billing_zip" name="billing_zip">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Payment Information</h5>
+                    <div class="mb-3">
+                        <label for="card_number" class="form-label">Card Number</label>
+                        <input type="text" class="form-control" id="card_number" name="card_number" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expiry_date" class="form-label">Expiry Date</label>
+                            <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Place Order</button>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <!-- Order Summary -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Order Summary</h5>
+                <hr>
+                {% for item in cart.items.all %}
+                <div class="d-flex justify-content-between mb-2">
+                    <span>{{ item.quantity }}x {{ item.product.name }}</span>
+                    <span>${{ item.get_total_price }}</span>
+                </div>
+                {% endfor %}
+                <hr>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>${{ cart.get_total_price }}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="fw-bold">Total</span>
+                    <span class="fw-bold">${{ cart.get_total_price }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Secure Checkout</h5>
+                <p class="card-text">
+                    <i class="fas fa-lock text-success"></i> Your payment information is encrypted and secure.
+                </p>
+                <div class="d-flex justify-content-between">
+                    <img src="https://via.placeholder.com/40" alt="Visa" class="img-fluid">
+                    <img src="https://via.placeholder.com/40" alt="Mastercard" class="img-fluid">
+                    <img src="https://via.placeholder.com/40" alt="American Express" class="img-fluid">
+                    <img src="https://via.placeholder.com/40" alt="Discover" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Handle same as shipping checkbox
+    $('#same_as_shipping').change(function() {
+        if (this.checked) {
+            $('#billing-fields').hide();
+            $('#billing-fields input').prop('required', false);
+        } else {
+            $('#billing-fields').show();
+            $('#billing-fields input').prop('required', true);
+        }
+    });
+
+    // Copy shipping to billing when checkbox is checked
+    $('#same_as_shipping').change(function() {
+        if (this.checked) {
+            $('#billing_first_name').val($('#shipping_first_name').val());
+            $('#billing_last_name').val($('#shipping_last_name').val());
+            $('#billing_address').val($('#shipping_address').val());
+            $('#billing_city').val($('#shipping_city').val());
+            $('#billing_state').val($('#shipping_state').val());
+            $('#billing_zip').val($('#shipping_zip').val());
+        }
+    });
+
+    // Format card number
+    $('#card_number').on('input', function() {
+        var value = $(this).val().replace(/\D/g, '');
+        var formattedValue = '';
+        for (var i = 0; i < value.length; i++) {
+            if (i > 0 && i % 4 === 0) {
+                formattedValue += ' ';
+            }
+            formattedValue += value[i];
+        }
+        $(this).val(formattedValue);
+    });
+
+    // Format expiry date
+    $('#expiry_date').on('input', function() {
+        var value = $(this).val().replace(/\D/g, '');
+        if (value.length > 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        $(this).val(value);
+    });
+
+    // Format CVV
+    $('#cvv').on('input', function() {
+        var value = $(this).val().replace(/\D/g, '');
+        $(this).val(value.substring(0, 4));
+    });
+
+    // Form submission
+    $('#checkout-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!this.checkValidity()) {
+            e.stopPropagation();
+            $(this).addClass('was-validated');
+            return;
+        }
+
+        // Process payment with Stripe
+        var form = $(this);
+        var submitButton = form.find('button[type="submit"]');
+        submitButton.prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...');
+
+        // Here you would typically:
+        // 1. Create a payment intent with Stripe
+        // 2. Process the payment
+        // 3. Create the order
+        // 4. Redirect to success page
+
+        // For now, we'll just simulate a successful payment
+        setTimeout(function() {
+            window.location.href = '{% url "shop:order_detail" order_id=1 %}';
+        }, 2000);
+    });
+</script>
+{% endblock %} 

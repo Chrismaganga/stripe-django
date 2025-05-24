@@ -1,0 +1,56 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-white py-12 px-4">
+  <div class="w-full max-w-3xl bg-white bg-opacity-80 rounded-2xl shadow-xl p-8 border border-blue-200">
+    <h2 class="text-3xl font-bold text-center mb-2">Contact Us</h2>
+    <p class="text-center text-lg text-gray-600 mb-8">Your Next Successful Business Starts Here – Reach Out to Us!</p>
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-pink-400"><i class="fas fa-user"></i></span>
+          <input type="text" name="name" placeholder="Your Name" class="pl-10 pr-4 py-3 rounded-lg border border-gray-200 w-full focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none" required>
+        </div>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-pink-400"><i class="fas fa-envelope"></i></span>
+          <input type="email" name="email" placeholder="Email Address" class="pl-10 pr-4 py-3 rounded-lg border border-gray-200 w-full focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none" required>
+        </div>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-pink-400"><i class="fas fa-globe"></i></span>
+          <select name="country" class="pl-10 pr-4 py-3 rounded-lg border border-gray-200 w-full focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none" required>
+            <option value="">Select Country</option>
+            <option value="US">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="IN">India</option>
+            <!-- Add more countries as needed -->
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="relative col-span-2 flex">
+          <span class="absolute left-3 top-3 text-pink-400"><i class="fas fa-mobile-alt"></i></span>
+          <input type="text" name="phone" placeholder="+000   Enter Phone Number" class="pl-10 pr-4 py-3 rounded-l-lg border border-gray-200 w-full focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none" required>
+        </div>
+        <div class="flex gap-2">
+          <select name="contact_method" class="py-3 rounded-lg border border-gray-200 w-1/2 focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none">
+            <option>Whatsapp</option>
+            <option>Telegram</option>
+            <option>Email</option>
+          </select>
+          <input type="text" name="contact_id" placeholder="Enter ID" class="py-3 rounded-lg border border-gray-200 w-1/2 focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none">
+        </div>
+      </div>
+      <div class="relative">
+        <span class="absolute left-3 top-3 text-pink-400"><i class="fas fa-comment-dots"></i></span>
+        <textarea name="message" rows="4" placeholder="Message" class="pl-10 pr-4 py-3 rounded-lg border border-gray-200 w-full focus:ring-2 focus:ring-pink-200 focus:border-pink-400 outline-none resize-none" required></textarea>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold rounded-full px-12 py-3 text-lg shadow-lg transition">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %} 

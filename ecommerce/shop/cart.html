@@ -1,0 +1,103 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %} 
+
+<div class="max-w-6xl mx-auto p-12">
+    <h1>My Cart</h1>
+    <div class="md:grid grid-cols-3 gap-8">
+        <div class="col-span-2">
+            <ul class="flex flex-col divide-y">
+
+                <li class="flex items-center py-4">
+                    <a href="" class="block aspect-square bg-gray-100 w-36">
+                        <img src="">
+                    </a>
+                    <div class="flex justify-between w-full pl-6">
+                        <div>
+                            <span>Product Name</span>
+                            <div class="flex items-center gap-4 mt-2">
+                                <form>
+                                    <select name="quantity" class="py-2 pr-2 cursor-pointer">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </form>
+                                <a href="" class="text-red-500 cursor-pointer">
+                                    Remove
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            $10.00
+                        </div>
+                    </div>
+                </li>
+
+                <li class="flex items-center py-4">
+                    <a href="" class="block aspect-square bg-gray-100 w-36">
+                        <img src="">
+                    </a>
+                    <div class="flex justify-between w-full pl-6">
+                        <div>
+                            <span>Product Name</span>
+                            <div class="flex items-center gap-4 mt-2">
+                                <form>
+                                    <select name="quantity" class="py-2 pr-2 cursor-pointer">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </form>
+                                <a href="" class="text-red-500 cursor-pointer">
+                                    Remove
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            $10.00
+                        </div>
+                    </div>
+                </li>
+
+                <li class="flex items-center py-4">
+                    <a href="" class="block aspect-square bg-gray-100 w-36">
+                        <img src="">
+                    </a>
+                    <div class="flex justify-between w-full pl-6">
+                        <div>
+                            <span>Product Name</span>
+                            <div class="flex items-center gap-4 mt-2">
+                                <form>
+                                    <select name="quantity" class="py-2 pr-2 cursor-pointer">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </form>
+                                <a href="" class="text-red-500 cursor-pointer">
+                                    Remove
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            $10.00
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div id="checkout_total" class="p-6">
+            <h2>Sub total</h2>
+            <p>Total: $45.00</p>
+            <a href="" class="button">Proceed to Checkout</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+{% endblock %}

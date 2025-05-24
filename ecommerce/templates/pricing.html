@@ -1,0 +1,60 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto py-16 px-4">
+    <h1 class="text-4xl font-bold text-center mb-12">Choose the Perfect Plan for You</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Basic Plan -->
+        <div class="bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Basic</h2>
+            <p class="text-gray-500 mb-6">Best for personal use.</p>
+            <div class="text-4xl font-bold mb-2">Free</div>
+            <button class="w-full bg-black text-white rounded-full py-2 mt-4 mb-8 font-semibold">Get Started</button>
+            <div class="w-full border-t border-gray-100 my-4"></div>
+            <h3 class="text-sm font-semibold mb-4 text-gray-700">What you will get</h3>
+            <ul class="text-gray-500 text-sm space-y-2 w-full">
+                <li class="flex items-center"><span class="mr-2">✔️</span>Access to core features</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Limited support</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Basic reporting tools</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Email support</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Communication tools</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Reporting and analytics</li>
+            </ul>
+        </div>
+        <!-- Enterprise Plan -->
+        <div class="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 rounded-3xl shadow-2xl p-8 flex flex-col items-center text-white border-4 border-blue-400 scale-105 z-10">
+            <h2 class="text-xl font-semibold mb-2">Enterprise</h2>
+            <p class="text-blue-200 mb-6">For large teams &amp; corporations.</p>
+            <div class="text-4xl font-bold mb-2">$80 <span class="text-lg font-normal">/ per month</span></div>
+            <button class="w-full bg-blue-400 text-white rounded-full py-2 mt-4 mb-8 font-semibold shadow-lg hover:bg-blue-300 transition">Get started</button>
+            <div class="w-full border-t border-blue-200 my-4"></div>
+            <h3 class="text-sm font-semibold mb-4 text-blue-100">What you will get</h3>
+            <ul class="text-blue-100 text-sm space-y-2 w-full">
+                <li class="flex items-center"><span class="mr-2">✔️</span>All features in Basic Plan</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Enhanced reporting and analytics</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Priority customer support</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Integration with key platforms</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Monthly updates</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Reporting and analytics</li>
+            </ul>
+        </div>
+        <!-- Business Plan -->
+        <div class="bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Business</h2>
+            <p class="text-gray-500 mb-6">Best for business owners.</p>
+            <div class="text-4xl font-bold mb-2">$120 <span class="text-lg font-normal">/ per month</span></div>
+            <button class="w-full bg-black text-white rounded-full py-2 mt-4 mb-8 font-semibold">Get Started</button>
+            <div class="w-full border-t border-gray-100 my-4"></div>
+            <h3 class="text-sm font-semibold mb-4 text-gray-700">What you will get</h3>
+            <ul class="text-gray-500 text-sm space-y-2 w-full">
+                <li class="flex items-center"><span class="mr-2">✔️</span>All features in Enterprise Plan</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Custom integrations</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Dedicated account manager</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Advanced analytics and insights</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Communication tools</li>
+                <li class="flex items-center"><span class="mr-2">✔️</span>Reporting and analytics</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %} 
